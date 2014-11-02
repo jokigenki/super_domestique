@@ -1,18 +1,27 @@
 /// Generate a new set of blocks
+
 while (blockEndX < display_get_width() + blockMoveSpeed)
 {
-    var instance = instance_create(blockEndX, 608, obj_ground);
+    var offset = choose(0,0,0,0,1,-1);
+    yOffset += offset;
+    var instance = instance_create(blockEndX, groundHeight + yOffset, obj_ground);
     if (roadCount > 0) {
-        blockEndX += sprite_get_width(sp_ground);
+        instance.potholeIndex = 0;
+        blockEndX += sprite_get_width(sp_ground_collision);
         roadCount--;
     } else {
-        instance.isPothole = true;
-        blockEndX += sprite_get_width(sp_pothole);
-        potHoleCount--;
-        if (potHoleCount == 0) {
+        instance.potholeIndex = potholes[potholeStartCount - 2, potholeStartCount - potholeCount];
+        blockEndX += sprite_get_width(sp_pothole_collision);
+        potholeCount--;
+        if (potholeCount == 0) {
             roadCount = round(random_range(minBlocks, maxBlocks));
-            potHoleCount = round(random_range(minGap, maxGap));
+            potholeCount = round(random_range(minGap, maxGap));
+            potholeStartCount = potholeCount;
             if (blockMoveSpeed < maxBlockMoveSpeed) blockMoveSpeed++;
        }
+    }
+    
+    with (instance) {
+        script_execute(scr_setGroundSprites);
     }
 }

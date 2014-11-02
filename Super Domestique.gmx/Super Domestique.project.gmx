@@ -7,16 +7,26 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sp_bird</sprite>
-    <sprite>sprites\sp_ground</sprite>
+    <sprite>sprites\sp_ground_collision</sprite>
     <sprite>sprites\sp_stop</sprite>
-    <sprite>sprites\sp_ground2</sprite>
-    <sprite>sprites\sp_pothole</sprite>
+    <sprite>sprites\sp_pothole_collision</sprite>
+    <sprite>sprites\sp_underground</sprite>
+    <sprite>sprites\sp_car</sprite>
+    <sprite>sprites\sp_trees</sprite>
+    <sprite>sprites\sp_road</sprite>
+    <sprite>sprites\sp_pothole_left</sprite>
+    <sprite>sprites\sp_pothole_left_mid</sprite>
+    <sprite>sprites\sp_pothole_right</sprite>
+    <sprite>sprites\sp_pothole_right_mid</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_generateGround.gml</script>
     <script>scripts\scr_moveBlock.gml</script>
+    <script>scripts\scr_setGroundSprites.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>

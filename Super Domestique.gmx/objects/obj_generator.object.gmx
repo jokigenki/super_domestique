@@ -28,16 +28,32 @@
             <string>/// Init vars and generate initial ground
 blockMoveStartSpeed = 8;
 blockMoveSpeed = blockMoveStartSpeed;
-maxBlockMoveSpeed = 20;
+maxBlockMoveSpeed = 60;
+groundHeight = 574;
+yOffset = 0;
 
-minGap = 3;
+obj_player.y = groundHeight - 5;
+
+minGap = 2;
 maxGap = 4;
 minBlocks = 14;
 maxBlocks = 20;
 
 blockEndX = 0;
 roadCount = round(random_range(minBlocks, maxBlocks));
-potHoleCount = round(random_range(minGap, maxGap));
+potholeCount = round(random_range(minGap, maxGap));
+potholeStartCount = potholeCount;
+
+potholes[0, 0] = 1;
+potholes[0, 1] = 4;
+potholes[1, 0] = 1;
+potholes[1, 1] = 2;
+potholes[1, 2] = 4;
+potholes[2, 0] = 1;
+potholes[2, 1] = 2;
+potholes[2, 2] = 3;
+potholes[2, 3] = 4;
+
 script_execute(scr_generateGround);
 </string>
           </argument>
@@ -61,9 +77,11 @@ script_execute(scr_generateGround);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check generate timer
+            <string>/// Update ground
 blockEndX -= blockMoveSpeed;
 script_execute(scr_generateGround);
+
+background_hspeed[0] = blockMoveSpeed / -10;
 </string>
           </argument>
         </arguments>

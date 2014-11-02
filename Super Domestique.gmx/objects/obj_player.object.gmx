@@ -35,7 +35,6 @@ jumpAllowed = true;
 jumpSpeed = 0;
 jumpEase = 4;
 maxJumpSpeed = 80;
-dash = 2;
 </string>
           </argument>
         </arguments>
@@ -59,30 +58,28 @@ dash = 2;
           <argument>
             <kind>1</kind>
             <string>/// Check collisions
-dashPressed = keyboard_check_pressed(vk_right);
-jumpPressed = keyboard_check_pressed(vk_up);
-
 var w = sprite_get_width(sp_bird);
+
 var colObject = instance_place(x + (w / 2), y + verticalSpeed, obj_ground);
 
 if (colObject) {
     // vertical collision - road
-    while (!place_meeting(x, y + sign(verticalSpeed), obj_ground)) {
-        y += sign(verticalSpeed);
-    }
+    //while (!place_meeting(x, y + sign(verticalSpeed), obj_ground)) {
+     //   y += sign(verticalSpeed);
+    //}
+    
+    y = colObject.y;
     if (sign(verticalSpeed) == 1) {
         grounded = 1;
     }
     verticalSpeed = 0;
-    if (colObject.isPothole) {
+    if (colObject.potholeIndex &gt; 0) {
         show_debug_message("hit pothole!");
         obj_generator.blockMoveSpeed = obj_generator.blockMoveStartSpeed;
     }
 } else {
     grounded = 0;
 }
-
-
 
 y += verticalSpeed;
 
@@ -124,14 +121,7 @@ x += horizontalSpeed;
           <argument>
             <kind>1</kind>
             <string>/// Player input
-if dashPressed {
-    if (dash &gt; 0) {
-        x+= 160;
-        dash -= 1;
-    }
-} else {
-    horizontalSpeed = -4;
-}
+jumpPressed = keyboard_check_pressed(vk_up);
 
 if jumpPressed { 
     if (jumpAllowed &amp;&amp; jumpSpeed &lt; maxJumpSpeed)
