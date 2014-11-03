@@ -1,3 +1,4 @@
+// display a pothole or road sprite
 if (potholeIndex > 0) {
     collisionSprite = sp_pothole_collision;
     switch (potholeIndex) {

@@ -26,24 +26,30 @@
           <argument>
             <kind>1</kind>
             <string>/// Init vars and generate initial ground
+
+// movement of the road
 blockMoveStartSpeed = 8;
 blockMoveSpeed = blockMoveStartSpeed;
+blockMoveSpeedIncrement = 2;
 maxBlockMoveSpeed = 60;
-groundHeight = 574;
-yOffset = 0;
+blockEndX = 0;
 
+// position the ground level
+groundHeight = 574;
 obj_player.y = groundHeight - 5;
 
+// how many blocks (32px) should potholes take up
 minGap = 2;
 maxGap = 4;
-minBlocks = 14;
-maxBlocks = 20;
-
-blockEndX = 0;
-roadCount = round(random_range(minBlocks, maxBlocks));
 potholeCount = round(random_range(minGap, maxGap));
 potholeStartCount = potholeCount;
 
+// how many blocks (64px) should road take up
+minBlocks = 14;
+maxBlocks = 20;
+roadCount = round(random_range(minBlocks, maxBlocks));
+
+// define the indices for the pothole sprites for different sized holes
 potholes[0, 0] = 1;
 potholes[0, 1] = 4;
 potholes[1, 0] = 1;

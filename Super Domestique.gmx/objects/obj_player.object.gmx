@@ -26,15 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>/// Init vars
-
-grav = 2;
-horizontalSpeed = -2;
-verticalSpeed = 0;
-grounded = 0;
-jumpAllowed = true;
-jumpSpeed = 0;
-jumpEase = 4;
-maxJumpSpeed = 80;
+grav = 2; // how fast player falls
+horizontalSpeed = -4; // how fast player moves horizontally
+verticalSpeed = 0; // how fast the player moves up/down, set when jumping
+grounded = 0; // is the player on the ground
+jumpAllowed = true; // can the player jump?
+jumpSpeed = 0; // how fast is the player accelerating while jumping
+jumpEase = 4; // how slowly the player reaches maximum jump velocity
+maxJumpSpeed = 80; // the maximum jump velocity
 </string>
           </argument>
         </arguments>
@@ -61,13 +60,8 @@ maxJumpSpeed = 80;
 var w = sprite_get_width(sp_bird);
 
 var colObject = instance_place(x + (w / 2), y + verticalSpeed, obj_ground);
-
 if (colObject) {
     // vertical collision - road
-    //while (!place_meeting(x, y + sign(verticalSpeed), obj_ground)) {
-     //   y += sign(verticalSpeed);
-    //}
-    
     y = colObject.y;
     if (sign(verticalSpeed) == 1) {
         grounded = 1;
