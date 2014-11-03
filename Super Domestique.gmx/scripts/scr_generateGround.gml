@@ -2,9 +2,7 @@
 
 while (blockEndX < display_get_width() + blockMoveSpeed)
 {
-    var offset = choose(0,0,0,0,1,-1);
-    yOffset += offset;
-    var instance = instance_create(blockEndX, groundHeight + yOffset, obj_ground);
+    var instance = instance_create(blockEndX, groundHeight, obj_ground);
     if (roadCount > 0) {
         instance.potholeIndex = 0;
         blockEndX += sprite_get_width(sp_ground_collision);

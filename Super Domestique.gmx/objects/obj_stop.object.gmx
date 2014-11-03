@@ -3,7 +3,7 @@
   <spriteName>sp_stop</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,131 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Hide Sprite
-visible = false;
+            <string>/// Init vars
+//mask_index = sp_stop;
+//sprite_index = -1;
+carAppearMinFrames = 150;
+carAppearMaxFrames = 300;
+carBotherMinFrames = 90;
+carBotherMaxFrames = 150;
+carCountdownTimer = round(random_range(carAppearMinFrames, carAppearMaxFrames));
+barStartX = x;
+carState = 0; // 0 = inactive, 1 = bothering, 2 = overtaking
+carStartX = -(64 + barStartX);
+carStartY = obj_generator.groundHeight + 3;
+carX = carStartX;
+carY = carStartY;
+carPushX = 300;
+carOvertakeY = carY + 5;
+carTargetSpeedX = 0;
+carSpeedX = 0;
+carSpeedY = 0;
+barSpeedX = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for car activation/deactivation
+if (carCountdownTimer &gt; 0) {
+    carCountdownTimer--;
+}
+if (carCountdownTimer == 0) {
+   countdownTimer = -1;
+    if (carState == 0) {
+        // make car drive onto screen
+        carState = 1; 
+        carSpeedX = 5;
+        carTargetSpeedX = 5;
+        barSpeedX = 5;
+        carSpeedY = 0;
+        carCountdownTimer = round(random_range(carBotherMinFrames, carBotherMaxFrames));
+    } else if (carState == 1) {
+        // increase car speed, and make it drive off edge of screen
+        carState = 2;
+        carTargetSpeedX = 15;
+        carSpeedY = 1;
+        barSpeedX = -5;
+    }
+}
+
+carSpeedX += (carTargetSpeedX - carSpeedX) / 10;
+
+// if the car is not active
+// or has not reached the edge of the bar, move it
+// otherwise move the bar
+if (carState == 1) {
+    if (carX &lt; -5) {
+        if (carTargetSpeedX &lt;= -10) {
+            carTargetSpeedX = 15;
+        }
+    } else {
+        //if (x &lt; carPushX) {
+            x += barSpeedX;
+        //}
+        carTargetSpeedX = -10;
+    }
+    carX += carSpeedX;
+} else if (carState == 2) {
+    if (x &gt; barStartX) x += barSpeedX;
+    carX += carSpeedX;
+    if (carY &lt; carOvertakeY) {
+        carY += carSpeedY;
+    }
+}
+
+// when the car has left the right edge, reset the car, countdown and bar position
+if (carState == 2 &amp;&amp; carX &gt; display_get_width() + 10) {
+    carState = 0;
+    carX = carStartX;
+    carY = carStartY;
+    carSpeedX = 0;
+    carSpeedY = 0;
+    carCountdownTimer = round(random_range(carAppearMinFrames, carAppearMaxFrames));
+    x = barStartX;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw Car
+//draw_sprite(sp_stop, 0, x, y);
+draw_sprite(sp_car, 0, x + carX, carY);
 </string>
           </argument>
         </arguments>

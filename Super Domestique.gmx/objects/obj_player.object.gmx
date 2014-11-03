@@ -28,7 +28,7 @@
             <string>/// Init vars
 
 grav = 2;
-horizontalSpeed = -1;
+horizontalSpeed = -2;
 verticalSpeed = 0;
 grounded = 0;
 jumpAllowed = true;
@@ -74,7 +74,6 @@ if (colObject) {
     }
     verticalSpeed = 0;
     if (colObject.potholeIndex &gt; 0) {
-        show_debug_message("hit pothole!");
         obj_generator.blockMoveSpeed = obj_generator.blockMoveStartSpeed;
     }
 } else {
@@ -85,19 +84,11 @@ y += verticalSpeed;
 
 // horizontal collision
 if place_meeting(x + horizontalSpeed, y, obj_stop) {
-    yp = 0;
-    while (place_meeting(x + horizontalSpeed, y - yp, obj_stop) &amp;&amp; yp &lt;= abs(1 * horizontalSpeed)) {
-        yp += 1;
+    xp = 0;
+    while (place_meeting(x + horizontalSpeed + xp, y, obj_stop)) {
+        xp += 1;
     }
-    if place_meeting(x + horizontalSpeed, y - yp, obj_stop) {
-        while (!place_meeting(x + sign(horizontalSpeed), y, obj_stop)) {
-            x += sign(horizontalSpeed);
-        }
-        horizontalSpeed = 0;
-        dash = 2;
-    } else {
-        y -= yp;
-    }
+    x += xp;
 }
 x += horizontalSpeed;
 </string>
