@@ -18,6 +18,7 @@
     <sprite>sprites\sp_pothole_left_mid</sprite>
     <sprite>sprites\sp_pothole_right</sprite>
     <sprite>sprites\sp_pothole_right_mid</sprite>
+    <sprite>sprites\sp_reverse_car</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -33,6 +34,7 @@
     <object>objects\obj_ground</object>
     <object>objects\obj_stop</object>
     <object>objects\obj_generator</object>
+    <object>objects\obj_car</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_game</room>

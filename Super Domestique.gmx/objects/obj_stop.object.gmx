@@ -28,23 +28,37 @@
             <string>/// Init vars
 //mask_index = sp_stop;
 //sprite_index = -1;
+
+// whether or not to use the back car
+useCar = false;
+
+// how many frames between each car instance
 carAppearMinFrames = 150;
 carAppearMaxFrames = 300;
+
+// how many frames the car will bother the player for
 carBotherMinFrames = 90;
 carBotherMaxFrames = 150;
+
+// used to countdown the car states
 carCountdownTimer = round(random_range(carAppearMinFrames, carAppearMaxFrames));
+
+// the stop bar start position
 barStartX = x;
 carState = 0; // 0 = inactive, 1 = bothering, 2 = overtaking
+
+// where the car starts, and where it is currently
 carStartX = -(64 + barStartX);
 carStartY = obj_generator.groundHeight + 3;
 carX = carStartX;
 carY = carStartY;
-carPushX = 300;
-carOvertakeY = carY + 5;
-carTargetSpeedX = 0;
-carSpeedX = 0;
-carSpeedY = 0;
-barSpeedX = 0;
+
+carOvertakeY = carY + 5; // the y position of the car when it is overtaking
+
+carTargetSpeedX = 0; // the car eases to this speed
+carSpeedX = 0; // the current x speed of the car
+carSpeedY = 0; // the current y speed of the car
+barSpeedX = 0; // the current x speed of the stop bar
 </string>
           </argument>
         </arguments>
@@ -68,7 +82,7 @@ barSpeedX = 0;
           <argument>
             <kind>1</kind>
             <string>/// Check for car activation/deactivation
-if (carCountdownTimer &gt; 0) {
+if (useCar &amp;&amp; carCountdownTimer &gt; 0) {
     carCountdownTimer--;
 }
 if (carCountdownTimer == 0) {
@@ -101,9 +115,7 @@ if (carState == 1) {
             carTargetSpeedX = 15;
         }
     } else {
-        //if (x &lt; carPushX) {
-            x += barSpeedX;
-        //}
+        x += barSpeedX;
         carTargetSpeedX = -10;
     }
     carX += carSpeedX;

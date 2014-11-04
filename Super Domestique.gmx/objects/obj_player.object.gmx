@@ -59,6 +59,9 @@ maxJumpSpeed = 80; // the maximum jump velocity
             <string>/// Check collisions
 var w = sprite_get_width(sp_bird);
 
+// check for a collision with a ground object
+// if colliding, set grounded to true and set verticalSpeed to 0
+// if the ground object is a pothole, reset move speed
 var colObject = instance_place(x + (w / 2), y + verticalSpeed, obj_ground);
 if (colObject) {
     // vertical collision - road
@@ -74,9 +77,15 @@ if (colObject) {
     grounded = 0;
 }
 
+// check for collision with car
+if place_meeting(x, y, obj_car) {
+    obj_generator.blockMoveSpeed = obj_generator.blockMoveStartSpeed;
+}
+
 y += verticalSpeed;
 
-// horizontal collision
+// check for a collision with the stop object. If colliding, push the player
+// forward until it is not colliding any more.
 if place_meeting(x + horizontalSpeed, y, obj_stop) {
     xp = 0;
     while (place_meeting(x + horizontalSpeed + xp, y, obj_stop)) {
@@ -108,6 +117,7 @@ x += horizontalSpeed;
             <string>/// Player input
 jumpPressed = keyboard_check_pressed(vk_up);
 
+// ease the player to maximum jump speed
 if jumpPressed { 
     if (jumpAllowed &amp;&amp; jumpSpeed &lt; maxJumpSpeed)
     {
