@@ -3,7 +3,7 @@
   <spriteName>sp_bird</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -94,6 +94,15 @@ if place_meeting(x + horizontalSpeed, y, obj_stop) {
     x += xp;
 }
 x += horizontalSpeed;
+
+// check for collision with speed balloon
+var balloonCol = instance_place(x, y, obj_speed_boost);
+if (balloonCol) {
+    obj_generator.blockMoveSpeed += obj_generator.blockMoveSpeedIncrement;
+    with (balloonCol) {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>

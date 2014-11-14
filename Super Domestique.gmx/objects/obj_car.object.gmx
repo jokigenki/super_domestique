@@ -3,7 +3,7 @@
   <spriteName>sp_reverse_car</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -36,7 +36,7 @@ carAppearMaxFrames = 300;
 carCountdownTimer = round(random_range(carAppearMinFrames, carAppearMaxFrames));
 
 // how fast the car should go, relative to the road speed
-carMinSpeed = 0;
+carMinSpeed = 1;
 carMaxSpeed = 5;
 carSpeedX = round(random_range(carMinSpeed, carMaxSpeed));
 </string>
