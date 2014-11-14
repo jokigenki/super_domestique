@@ -27,6 +27,13 @@
             <kind>1</kind>
             <string>/// Init vars and generate initial ground
 
+// total number of blocks to be generated before the end of the game
+totalBlocksToGenerate = 300;
+totalBlocksGenerated = 0;
+
+// how far in pixels the player has travelled.
+distanceTravelled = 0;
+
 // movement of the road
 blockMoveStartSpeed = 8;
 blockMoveSpeed = blockMoveStartSpeed;

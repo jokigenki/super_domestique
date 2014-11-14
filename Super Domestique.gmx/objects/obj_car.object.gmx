@@ -26,9 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>/// Init vars
-y = obj_generator.groundHeight + 3;
+
+// initial and reset positions
 carStartX = display_get_width() + 10;
 x = carStartX;
+y = obj_generator.groundHeight + 3;
+
+// whether or not to generate the car
+shouldGenerate = true;
 
 // how many frames between each car instance
 carAppearMinFrames = 150;
@@ -69,6 +74,7 @@ if (carCountdownTimer == 0) {
     
     // if car has left edge of screen, reset car and restart countdown
     if (x &lt; -sprite_get_width(sp_reverse_car)) {
+        if (!shouldGenerate) exit;
         carCountdownTimer = round(random_range(carAppearMinFrames, carAppearMaxFrames));
         x = carStartX;
         carSpeedX = round(random_range(carMinSpeed, carMaxSpeed));

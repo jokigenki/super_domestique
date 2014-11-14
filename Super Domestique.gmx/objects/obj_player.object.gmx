@@ -34,6 +34,8 @@ jumpAllowed = true; // can the player jump?
 jumpSpeed = 0; // how fast is the player accelerating while jumping
 jumpEase = 4; // how slowly the player reaches maximum jump velocity
 maxJumpSpeed = 80; // the maximum jump velocity
+shouldAnimate = true; // whether or not to animate
+animationSpeed = image_speed;
 </string>
           </argument>
         </arguments>
@@ -138,6 +140,29 @@ if jumpPressed {
     jumpAllowed = grounded;
 }
 verticalSpeed += grav;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Animation
+if (shouldAnimate) image_speed = animationSpeed;
+else image_speed = 0;
 </string>
           </argument>
         </arguments>
