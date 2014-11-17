@@ -106,10 +106,10 @@ draw_set_colour(c_black);
 draw_text(lineStartX + 15 , y + 13, currentTimeString);
 
 draw_set_halign(fa_center);
-if (minutesRemaining &lt; 5) draw_set_colour(c_red);
+if (minutesRemaining &lt; 6) draw_set_colour(c_red);
 else draw_set_colour(c_black);
-var suffix = "mins left";
-if (minutesRemaining &lt; 0) suffix = "mins late!";
+var suffix = " mins left";
+if (minutesRemaining &lt; 0) suffix = " mins late!";
 draw_text(x , y + 13, string(minutesRemaining) + suffix);
 
 draw_set_halign(fa_right);

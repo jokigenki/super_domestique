@@ -10,6 +10,7 @@
     <texgroup0>0</texgroup0>
   </texgroups>
   <ranges>
+    <range0>33,33</range0>
     <range0>48,58</range0>
     <range0>97,97</range0>
     <range0>101,102</range0>
@@ -19,28 +20,29 @@
     <range0>115,117</range0>
   </ranges>
   <glyphs>
-    <glyph character="110" x="28" y="2" w="7" h="11" shift="7" offset="0"/>
-    <glyph character="109" x="37" y="2" w="7" h="11" shift="7" offset="0"/>
-    <glyph character="102" x="2" y="17" w="6" h="11" shift="7" offset="0"/>
+    <glyph character="97" x="2" y="17" w="6" h="11" shift="7" offset="1"/>
+    <glyph character="109" x="28" y="2" w="7" h="11" shift="7" offset="0"/>
+    <glyph character="110" x="37" y="2" w="7" h="11" shift="7" offset="0"/>
+    <glyph character="102" x="54" y="2" w="6" h="11" shift="7" offset="0"/>
     <glyph character="55" x="2" y="30" w="5" h="11" shift="7" offset="1"/>
     <glyph character="53" x="9" y="30" w="5" h="11" shift="7" offset="1"/>
     <glyph character="50" x="45" y="17" w="5" h="11" shift="7" offset="1"/>
     <glyph character="101" x="52" y="17" w="5" h="11" shift="7" offset="1"/>
-    <glyph character="108" x="30" y="30" w="5" h="11" shift="7" offset="1"/>
+    <glyph character="108" x="16" y="30" w="5" h="11" shift="7" offset="1"/>
     <glyph character="52" x="37" y="30" w="5" h="11" shift="7" offset="1"/>
-    <glyph character="56" x="16" y="30" w="5" h="11" shift="7" offset="1"/>
+    <glyph character="56" x="30" y="30" w="5" h="11" shift="7" offset="1"/>
     <glyph character="115" x="23" y="30" w="5" h="11" shift="7" offset="1"/>
     <glyph character="49" x="44" y="30" w="3" h="11" shift="7" offset="2"/>
-    <glyph character="51" x="38" y="17" w="5" h="11" shift="7" offset="1"/>
+    <glyph character="51" x="17" y="17" w="5" h="11" shift="7" offset="1"/>
     <glyph character="54" x="10" y="17" w="5" h="11" shift="7" offset="1"/>
-    <glyph character="105" x="17" y="17" w="5" h="11" shift="7" offset="1"/>
+    <glyph character="105" x="24" y="17" w="5" h="11" shift="7" offset="1"/>
     <glyph character="112" x="11" y="2" w="6" h="13" shift="7" offset="0"/>
     <glyph character="117" x="19" y="2" w="7" h="11" shift="7" offset="0"/>
-    <glyph character="48" x="24" y="17" w="5" h="11" shift="7" offset="1"/>
-    <glyph character="116" x="54" y="2" w="6" h="11" shift="7" offset="0"/>
+    <glyph character="48" x="31" y="17" w="5" h="11" shift="7" offset="1"/>
+    <glyph character="116" x="46" y="2" w="6" h="11" shift="7" offset="0"/>
     <glyph character="32" x="2" y="2" w="7" h="13" shift="7" offset="0"/>
-    <glyph character="57" x="31" y="17" w="5" h="11" shift="7" offset="1"/>
-    <glyph character="97" x="46" y="2" w="6" h="11" shift="7" offset="1"/>
+    <glyph character="33" x="52" y="30" w="1" h="11" shift="7" offset="2"/>
+    <glyph character="57" x="38" y="17" w="5" h="11" shift="7" offset="1"/>
     <glyph character="58" x="49" y="30" w="1" h="11" shift="7" offset="2"/>
   </glyphs>
   <kerningPairs/>
